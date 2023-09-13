@@ -20,7 +20,12 @@ curl --location 'http://localhost:8080/repositories/github/most-popular?sinceDat
 ```
 Params:
 - ```sinceDate``` is the date onwards that sould be return
-- ```limit``` is the number of repositories to be return (max is 100)
+- ```limit``` is the number of repositories to be return (max is 100). It is an optional field
+- ```language``` is the  language of the code in the repositories. It is an optional field
 
 ## Assumptions and Decisions
-- I assumed that the 
+- I assumed that the ```limit``` and ```language``` are optional possibilities for the application.
+- I don't know the level of testing that was required but I focused in the basics scenarios for now.
+- I added comment in the code, I thought would be better than add then here.
+
+Thank you for the challenge :)
