@@ -48,6 +48,7 @@ public class GithubApiService implements ApiService {
     if(language != null && !language.isBlank()) {
       url += String.format("&q=name:%s", language);
     }
+    
     return url;
   }
 }
