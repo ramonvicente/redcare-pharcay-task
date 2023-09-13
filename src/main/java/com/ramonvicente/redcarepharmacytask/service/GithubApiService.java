@@ -1,10 +1,11 @@
 package com.ramonvicente.redcarepharmacytask.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ramonvicente.redcarepharmacytask.dto.GithubRepositoryResponse;
+import com.ramonvicente.redcarepharmacytask.dto.api.GithubRepositoryResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +17,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GithubApiService implements ApiService {
 
+  private static final String SEARCH_REPOSITORY_URL = "/search/repositories";
+  private static final String BASE_URL = "https://api.github.com/";
+
   private final RestTemplate restTemplate;
 
   @Override
@@ -23,12 +27,11 @@ public class GithubApiService implements ApiService {
     if(createdDate.isBlank()) {
       throw new IllegalArgumentException();
     }
-
-    if(limit < 1) {
-      throw new IllegalArgumentException();
-    }
     
-    String fullUrl = String.format("https://api.github.com/search/repositories?q=created:%s&sort=stars&order=desc&per_page=%s&q=name:blablads", createdDate, limit);
+    String fullUrl = String.format("%s%s?q=created:%s&sort=stars&order=desc", BASE_URL, SEARCH_REPOSITORY_URL, createdDate);
+    if(limit > 0) {
+      fullUrl += String.format("&per_page=%s", limit);
+    }
     String responseBody = restTemplate.getForObject(fullUrl, String.class);
 
     try {

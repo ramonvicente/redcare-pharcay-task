@@ -1,4 +1,4 @@
-package com.ramonvicente.redcarepharmacytask.dto;
+package com.ramonvicente.redcarepharmacytask.dto.api;
 
 import java.util.List;
 

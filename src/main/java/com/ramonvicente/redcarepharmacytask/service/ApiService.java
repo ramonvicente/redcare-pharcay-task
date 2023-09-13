@@ -1,6 +1,6 @@
 package com.ramonvicente.redcarepharmacytask.service;
 
-import com.ramonvicente.redcarepharmacytask.dto.GithubRepositoryResponse;
+import com.ramonvicente.redcarepharmacytask.dto.api.GithubRepositoryResponse;
 
 public interface ApiService {
   /**
