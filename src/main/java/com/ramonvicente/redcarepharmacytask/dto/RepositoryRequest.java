@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class RepositoryRequest {
   @NotBlank
-  @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}")
+  @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "sinceDate should match the format YYYY-MM-DD")
   private String sinceDate;
   private Integer limit;
 }

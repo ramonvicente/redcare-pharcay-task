@@ -1,6 +1,5 @@
 package com.ramonvicente.redcarepharmacytask.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -18,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 public class GithubApiService implements ApiService {
 
   private static final String SEARCH_REPOSITORY_URL = "/search/repositories";
+  // this could be take as a environment variable or from the properties 
+  // but for now make sense for me keep here
   private static final String BASE_URL = "https://api.github.com";
 
   private final RestTemplate restTemplate;
