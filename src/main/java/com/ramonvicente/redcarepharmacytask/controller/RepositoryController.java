@@ -24,7 +24,7 @@ public class RepositoryController {
   @Autowired
   private RepositoryService repositoryService;
 
-  @GetMapping(value = "/github/stars", produces = MediaType.APPLICATION_JSON_VALUE)
+  @GetMapping(value = "/github/most-popular", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.OK)
   public List<RepositoryResponse> getRepositories(@ModelAttribute @Valid RepositoryRequest request) {
 

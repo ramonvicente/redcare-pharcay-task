@@ -29,7 +29,7 @@ public class RepositoryControllerTests {
     
 
       mockMvc.perform(MockMvcRequestBuilders
-                      .get("/repositories/github/stars")
+                      .get("/repositories/github/most-popular")
                       .contentType(MediaType.APPLICATION_JSON)
                       .param("sinceDate", "2019-10-11"))
               .andExpect(MockMvcResultMatchers
