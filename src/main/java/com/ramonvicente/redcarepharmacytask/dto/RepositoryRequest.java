@@ -1,5 +1,6 @@
 package com.ramonvicente.redcarepharmacytask.dto;
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -11,5 +12,7 @@ public class RepositoryRequest {
   @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "sinceDate should match the format YYYY-MM-DD")
   private String sinceDate;
   private String language;
+  //according to github api
+  @Max(100)
   private Integer limit;
 }

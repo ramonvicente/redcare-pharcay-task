@@ -3,18 +3,24 @@
 ## SetUp and Run
 In order to run the application with gradle: 
 
-- run application:
-```./gradlew bootRun```
-- run tests:
-```./gradlew test```
+- run ```./gradlew build``` to build the application
+- then run ```docker build -t redcare-pharmacy-task:latest``` to run the docker image.
+- and ```docker run -p 8080:8080 redcare-pharmacy-task:latest``` to run the application
+
+To run the tests: 
+- ```./gradlew test```
 
 ## Endpoints
 - For information about the endpoint access the swagger documentation: http://localhost:8080/swagger-ui/index.html
 
 ### get most popular github repositories 
 ```
-curl --location 'http://localhost:8080/repositories/github/most-popular?sinceDate=2019-01-10&language=java' \
+curl --location 'http://localhost:8080/repositories/github/most-popular?sinceDate=2019-01-10&limit=3&language=java' \
 --data ''
 ```
+Params:
+- ```sinceDate``` is the date onwards that sould be return
+- ```limit``` is the number of repositories to be return (max is 100)
 
 ## Assumptions and Decisions
+- I assumed that the 

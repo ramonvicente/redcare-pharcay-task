@@ -40,7 +40,7 @@ public class GithubApiService implements ApiService {
   }
 
   private String buildUrlRequest(String createdDate, Integer limit, String language) {
-    String url = String.format("%s%s?q=created:%s&sort=stars&order=desc", BASE_URL, SEARCH_REPOSITORY_URL, createdDate);
+    String url = String.format("%s%s?q=created:>=%s&sort=stars&order=desc", BASE_URL, SEARCH_REPOSITORY_URL, createdDate);
     if(limit != null) {
       url += String.format("&per_page=%s", limit);
     }
