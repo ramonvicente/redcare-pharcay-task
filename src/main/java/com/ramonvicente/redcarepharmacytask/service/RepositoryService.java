@@ -16,12 +16,12 @@ public class RepositoryService {
 
   private final ApiService apiService;
 
-  public List<RepositoryResponse> getMostPopularRepositories(String createdDate, Integer limit) {
+  public List<RepositoryResponse> getMostPopularRepositories(String createdDate, Integer limit, String language) {
     if(createdDate.isBlank()) {
       throw new IllegalArgumentException();
     }
 
-    GithubRepositoryResponse response = apiService.getAllPopularFromDate(createdDate, limit);
+    GithubRepositoryResponse response = apiService.getAllPopularFromDate(createdDate, limit, language);
 
     List<RepositoryResponse> repositories = response.getItems().stream()
       .map( item -> toRepositories(item)).toList();

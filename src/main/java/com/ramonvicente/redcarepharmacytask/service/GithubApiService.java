@@ -24,21 +24,30 @@ public class GithubApiService implements ApiService {
   private final RestTemplate restTemplate;
 
   @Override
-  public GithubRepositoryResponse getAllPopularFromDate(String createdDate, Integer limit) {
+  public GithubRepositoryResponse getAllPopularFromDate(String createdDate, Integer limit, String language) {
     if(createdDate.isBlank()) {
       throw new IllegalArgumentException();
     }
-    
-    String fullUrl = String.format("%s%s?q=created:%s&sort=stars&order=desc", BASE_URL, SEARCH_REPOSITORY_URL, createdDate);
-    if(limit != null) {
-      fullUrl += String.format("&per_page=%s", limit);
-    }
-    String responseBody = restTemplate.getForObject(fullUrl, String.class);
+
+    String url = buildUrlRequest(createdDate, limit, language);
+    String responseBody = restTemplate.getForObject(url, String.class);
 
     try {
       return new ObjectMapper().readValue(responseBody, new TypeReference<GithubRepositoryResponse>() {});
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
+  }
+
+  private String buildUrlRequest(String createdDate, Integer limit, String language) {
+    String url = String.format("%s%s?q=created:%s&sort=stars&order=desc", BASE_URL, SEARCH_REPOSITORY_URL, createdDate);
+    if(limit != null) {
+      url += String.format("&per_page=%s", limit);
+    }
+
+    if(language != null && !language.isBlank()) {
+      url += String.format("&q=name:%s", language);
+    }
+    return url;
   }
 }

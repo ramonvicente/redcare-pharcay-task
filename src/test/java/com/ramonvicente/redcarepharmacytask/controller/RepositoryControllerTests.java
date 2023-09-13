@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.ramonvicente.redcarepharmacytask.dto.RepositoryRequest;
 
+//The idea here was create a kind of acceptance test focus in the happy path since already has unit test
 @SpringBootTest
 @AutoConfigureMockMvc
 public class RepositoryControllerTests {

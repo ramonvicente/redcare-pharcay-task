@@ -42,7 +42,7 @@ public class GithubApiServiceTests {
 		when(restTemplate.getForObject(any(String.class), eq(String.class))).thenReturn(response);
 		
 		//when
-		GithubRepositoryResponse result = gitHubApiService.getAllPopularFromDate("2019-10-11", 3);
+		GithubRepositoryResponse result = gitHubApiService.getAllPopularFromDate("2019-10-11", 3, null);
 
 		//then
 		assertNotNull(result);
@@ -59,7 +59,7 @@ public class GithubApiServiceTests {
 		when(restTemplate.getForObject(any(String.class), eq(String.class))).thenReturn("{\"items\":[]}");
 
 		//when
-		GithubRepositoryResponse result = gitHubApiService.getAllPopularFromDate("2019-10-11", 3);
+		GithubRepositoryResponse result = gitHubApiService.getAllPopularFromDate("2019-10-11", 3, null);
 
 		//then
 		assertEquals(0, result.getItems().size());

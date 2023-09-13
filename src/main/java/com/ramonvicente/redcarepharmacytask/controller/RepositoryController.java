@@ -24,11 +24,13 @@ public class RepositoryController {
   @Autowired
   private RepositoryService repositoryService;
 
+  // First I added params with @RequestParam but since I have 3 params and thinling also about validation maybe use @ModelAttribute 
+  // to bind the params would make the code better visual and to manage validation
   @GetMapping(value = "/github/most-popular", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.OK)
   public List<RepositoryResponse> getRepositories(@ModelAttribute @Valid RepositoryRequest request) {
 
-    return repositoryService.getMostPopularRepositories(request.getSinceDate(), request.getLimit());
+    return repositoryService.getMostPopularRepositories(request.getSinceDate(), request.getLimit(), request.getLanguage());
   }
   
 }

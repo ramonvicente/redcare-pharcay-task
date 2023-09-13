@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+//Decided to add this ControllerAdvice to personalize the errors for the request params and the illegalarguments.
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
