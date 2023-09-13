@@ -8,7 +8,6 @@ import com.ramonvicente.redcarepharmacytask.dto.RepositoryResponse;
 import com.ramonvicente.redcarepharmacytask.dto.api.GithubItemResponse;
 import com.ramonvicente.redcarepharmacytask.dto.api.GithubRepositoryResponse;
 
-import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -17,7 +16,7 @@ public class RepositoryService {
 
   private final ApiService apiService;
 
-  public List<RepositoryResponse> getMostPopularRepositories(String createdDate, @Nullable int limit) {
+  public List<RepositoryResponse> getMostPopularRepositories(String createdDate, Integer limit) {
     if(createdDate.isBlank()) {
       throw new IllegalArgumentException();
     }

@@ -18,18 +18,18 @@ import lombok.RequiredArgsConstructor;
 public class GithubApiService implements ApiService {
 
   private static final String SEARCH_REPOSITORY_URL = "/search/repositories";
-  private static final String BASE_URL = "https://api.github.com/";
+  private static final String BASE_URL = "https://api.github.com";
 
   private final RestTemplate restTemplate;
 
   @Override
-  public GithubRepositoryResponse getAllPopularFromDate(String createdDate, int limit) {
+  public GithubRepositoryResponse getAllPopularFromDate(String createdDate, Integer limit) {
     if(createdDate.isBlank()) {
       throw new IllegalArgumentException();
     }
     
     String fullUrl = String.format("%s%s?q=created:%s&sort=stars&order=desc", BASE_URL, SEARCH_REPOSITORY_URL, createdDate);
-    if(limit > 0) {
+    if(limit != null) {
       fullUrl += String.format("&per_page=%s", limit);
     }
     String responseBody = restTemplate.getForObject(fullUrl, String.class);
